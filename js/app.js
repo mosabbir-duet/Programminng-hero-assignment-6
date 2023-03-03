@@ -1,13 +1,20 @@
-const loadAItools = () => {
+const loadAItools = (flag) => {
   fetch("https://openapi.programming-hero.com/api/ai/tools")
     .then((res) => res.json())
-    .then((data) => displayAiTools(data.data.tools));
+    .then((data) => displayAiTools(data.data.tools,flag));
 };
 
-const displayAiTools = (tools) => {
+const displayAiTools = (tools,flag) => {
   console.log(tools);
   const aiToolsContainer = document.getElementById("ai-universe-tool");
   aiToolsContainer.innerHTML = "";
+  if(flag && tools.length > 6){
+    tools = tools.slice(0,6);
+    document.getElementById('see-more').classList.remove('d-none');
+  }
+  else {
+    document.getElementById('see-more').classList.add('d-none');
+  }
   tools.forEach((tool) => {
     aiToolsContainer.innerHTML += `
             <div class="col">

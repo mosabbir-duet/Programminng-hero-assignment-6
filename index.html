@@ -17,7 +17,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="container" onload="loadAItools()">
+  <body class="container" onload="loadAItools(true)">
     <header>
       <div id="header-section" class="text-center">
         <h1 class="my-4">AI Universe Hub</h1>
@@ -25,7 +25,7 @@
       </div>
     </header>
 
-    <main>
+    <main class="mb-5">
       <!-- display data section  -->
 
       <section>
@@ -33,6 +33,20 @@
           id="ai-universe-tool"
           class="row row-cols-1 row-cols-md-3 g-4"
         ></div>
+      </section>
+
+      <!-- see more section  -->
+
+      <section>
+        <div id="see-more" class="text-center my-4 d-none">
+          <button
+            onclick="loadAItools(false)"
+            class="btn btn-danger text-white rounded-2 fw-semibold"
+            style="font-size: 18px; padding: 12px 20px"
+          >
+            See More
+          </button>
+        </div>
       </section>
     </main>
     <script src="./js/app.js"></script>
