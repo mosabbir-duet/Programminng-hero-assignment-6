@@ -35,7 +35,7 @@ const displayAiTools = (tools,flag) => {
 
                             <div>
                                 <span>
-                                <i class="fa-solid fa-arrow-right-long bg-danger text-danger p-2 rounded-circle bg-opacity-25" ></i>
+                                <i class="fa-solid fa-arrow-right-long bg-danger text-danger p-2 rounded-circle bg-opacity-25" data-bs-toggle="modal" data-bs-target="#aiModal" ></i>
                                 </span>
                             </div>
                         </div>
