@@ -35,7 +35,7 @@ const displayAiTools = (tools,flag) => {
 
                             <div>
                                 <span>
-                                <i class="fa-solid fa-arrow-right-long bg-danger text-danger p-2 rounded-circle bg-opacity-25" data-bs-toggle="modal" data-bs-target="#aiModal" ></i>
+                                <i class="fa-solid fa-arrow-right-long bg-danger text-danger p-2 rounded-circle bg-opacity-25" data-bs-toggle="modal" data-bs-target="#aiModal" onclick = "loadAiId('${tool.id}')"></i>
                                 </span>
                             </div>
                         </div>
@@ -49,6 +49,11 @@ const displayAiTools = (tools,flag) => {
   spinnersOff(false);
 
 };
+
+const loadAiId = id => {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    fetch(url).then(res => res.json()).then(data => console.log(data));
+}
 
 
 const spinnersOff = status => {
