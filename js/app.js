@@ -44,8 +44,13 @@ const displayAiTools = (tools,flag) => {
             </div>
         `;
   });
+
+
+  spinnersOff(false);
+
 };
 
 
-
-loadAItools();
+const spinnersOff = status => {
+    document.getElementById('spinners-div').classList.add('d-none');
+}
