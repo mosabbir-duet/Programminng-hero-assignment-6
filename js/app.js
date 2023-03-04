@@ -71,15 +71,45 @@ const displayAiID = data => {
     servicePrice.innerHTML = `
         ${data.pricing !== null? data.pricing.map(price => {
             return `
-            <div class="text-center bg-light text-danger px-4 py-3 rounded-3 m-2">
+            <div class="text-center bg-light text-danger px-2 py-3 rounded-3 m-2">
 
-            <h5 class = >${price.price !== '0' || price.price !== null ?price.price:"Free of cost"} <br> <span>${price.plan}</span></h5> </div>`;
+            <h6 class = "h-100">${price.price !== null ?price.price:"Free of cost"} <br> <span>${price.plan}</span></h6> </div>`;
         }).join(""):  "No data available"}
                             
                           
     `;
 
     modalContainer.appendChild(servicePrice);
+
+    const featureAndIntegration = document.createElement('div');
+    featureAndIntegration.classList.add('d-md-flex' ,'justify-content-between', 'mt-3');
+    // console.log(data.features)
+    featureAndIntegration.innerHTML += `
+    <div>
+        <h5 class="card-title">Features</h5>
+        <ul style = "padding-left:16px">
+        ${Object.entries(data.features).map(([key,value]) => {
+            // console.log(key);
+            // console.log(".........");
+            // console.log(value.feature_name);
+            return `<li>${value.feature_name}</li>`
+            // for(item in value) {
+            //     console.log(item.feature_n);
+            // }
+            
+        }).join("")}
+        </ul>
+    </div>
+
+    <div>
+        <h5 class="card-title">Integrations</h5>
+        <ul style = "padding-left:16px">${data.integrations !== null ? data.integrations.map((integ) => {
+        return `<li>${integ?integ:"No data found"}</li>`;
+        }).join(""): "No data Found"}
+        </ul>
+    </div>
+    `;
+modalContainer.appendChild(featureAndIntegration);
 
 }
 
