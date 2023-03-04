@@ -127,6 +127,30 @@ else {
     document.getElementById('acuracy-badge').classList.add('d-none');
 }
 
+
+// input-output Functionality 
+
+const inputOutput = document.getElementById('input-output')
+
+
+inputOutput.innerHTML = "";
+
+if(data.input_output_examples !== null) {
+    
+    data.input_output_examples.forEach(element => {
+    inputOutput.innerHTML += `
+    <h5  class="card-title">${element.input?element.input:"No data found"}</h5>
+    <p>${element.output?element.output:"No data found"}</p>
+    `;
+
+});
+}
+
+else {
+    inputOutput.innerHTML = `<p>No data found</p>`;
+}
+
+
 }
 
 
