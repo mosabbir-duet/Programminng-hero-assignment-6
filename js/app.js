@@ -5,7 +5,7 @@ const loadAItools = (flag) => {
 };
 
 const displayAiTools = (tools,flag) => {
-  console.log(tools);
+
   const aiToolsContainer = document.getElementById("ai-universe-tool");
   aiToolsContainer.innerHTML = "";
   if(flag && tools.length > 6){
@@ -14,7 +14,10 @@ const displayAiTools = (tools,flag) => {
   }
   else {
     document.getElementById('see-more').classList.add('d-none');
+    spinnersOff(true);
   }
+
+  console.log(tools);
   tools.forEach((tool) => {
     aiToolsContainer.innerHTML += `
             <div class="col">
@@ -74,7 +77,7 @@ const displayAiID = data => {
             <div class="text-center bg-light text-danger px-2 py-3 rounded-3 m-2">
 
             <h6 class = "h-100">${price.price !== null ?price.price:"Free of cost"} <br> <span>${price.plan}</span></h6> </div>`;
-        }).join(""):  "No data available"}
+        }).join(""): "No data found"}
                             
                           
     `;
@@ -153,8 +156,31 @@ else {
 
 }
 
+const loadAItoolsSortByDate = () => {
+    fetch("https://openapi.programming-hero.com/api/ai/tools")
+    .then((res) => res.json())
+    .then((data) => displayShortByDate(data.data.tools));
+}
+
+const displayShortByDate = tools => {
+    tools = tools.sort(shortByDate);
+    displayAiTools(tools,true);
+
+}
+
+// sort by date 
+
+function shortByDate(a,b) {
+    return new Date(a.published_in).valueOf() - new Date(b.published_in).valueOf()
+}
 
 
 const spinnersOff = status => {
-    document.getElementById('spinners-div').classList.add('d-none');
+    if(status) {
+        document.getElementById('spinners-div').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('spinners-div').classList.add('d-none');
+    }
+    
 }
