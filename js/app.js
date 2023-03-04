@@ -17,7 +17,9 @@ const displayAiTools = (tools,flag) => {
     spinnersOff(true);
   }
 
-  console.log(tools);
+//   console.log(tools);
+
+// Display data in card dom functionality
   tools.forEach((tool) => {
     aiToolsContainer.innerHTML += `
             <div class="col">
@@ -48,25 +50,30 @@ const displayAiTools = (tools,flag) => {
         `;
   });
 
+//   spinners off 
 
   spinnersOff(false);
 
 };
+
+// load id dynamically 
 
 const loadAiId = id => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     fetch(url).then(res => res.json()).then(data => displayAiID(data.data));
 }
 
+// display in modal individual id properties 
+
 const displayAiID = data => {
-    console.log(data)
+    // console.log(data)
     const modalContainer = document.getElementById('row-modal');
     modalContainer.innerHTML = "";
 
     const toolDescription = document.createElement('h4');
 
-    console.log(data.description);
-    console.log(toolDescription);
+    // console.log(data.description);
+    // console.log(toolDescription);
     toolDescription.innerHTML = data.description;
     modalContainer.appendChild(toolDescription);
     const servicePrice = document.createElement('div');
@@ -83,7 +90,7 @@ const displayAiID = data => {
     `;
 
     modalContainer.appendChild(servicePrice);
-
+// Added feature and integration functionality 
     const featureAndIntegration = document.createElement('div');
     featureAndIntegration.classList.add('d-md-flex' ,'justify-content-between', 'mt-3');
     // console.log(data.features)
@@ -176,6 +183,7 @@ function shortByDate(a,b) {
     return new Date(a.published_in).valueOf() - new Date(b.published_in).valueOf()
 }
 
+// spinnersOff Callback Function 
 
 const spinnersOff = status => {
     if(status) {
