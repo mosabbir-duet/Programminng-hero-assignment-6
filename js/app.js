@@ -156,6 +156,8 @@ else {
 
 }
 
+// load api for shotbydate 
+
 const loadAItoolsSortByDate = () => {
     fetch("https://openapi.programming-hero.com/api/ai/tools")
     .then((res) => res.json())
