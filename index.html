@@ -30,6 +30,20 @@
       .modal-header {
         border-bottom: none !important;
       }
+
+      #image-area {
+        position: relative;
+      }
+
+      #acuracy-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        font-weight: normal;
+        border-radius: 10px;
+        text-align: center;
+      }
     </style>
   </head>
   <body class="container" onload="loadAItools(true)">
@@ -126,12 +140,21 @@
                   </div>
                   <div class="col">
                     <div class="card">
-                      <img
-                        id="modal-item-image"
-                        src="..."
-                        class="card-img-top"
-                        alt="..."
-                      />
+                      <div id="image-area">
+                        <img
+                          id="modal-item-image"
+                          src="..."
+                          class="card-img-top"
+                          alt="..."
+                        />
+                        <span
+                          id="acuracy-badge"
+                          class="badge text-bg-danger px-3 py-2 d-none"
+                          ><span id="accuracy-value" class="pe-1"></span>
+                          accuracy</span
+                        >
+                      </div>
+
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">

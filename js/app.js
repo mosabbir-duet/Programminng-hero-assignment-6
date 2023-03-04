@@ -111,7 +111,24 @@ const displayAiID = data => {
     `;
 modalContainer.appendChild(featureAndIntegration);
 
+// Image and accuracy functionality 
+
+const modalImage = document.getElementById('modal-item-image');
+modalImage.setAttribute('src',`${data.image_link[0]}`)
+
+// accuracy 
+
+if(data.accuracy.score !== null) {
+    document.getElementById('accuracy-value').innerText = `${parseInt(100*(data.accuracy.score))}%`;
+    document.getElementById('acuracy-badge').classList.remove('d-none');
 }
+
+else {
+    document.getElementById('acuracy-badge').classList.add('d-none');
+}
+
+}
+
 
 
 const spinnersOff = status => {
