@@ -52,7 +52,35 @@ const displayAiTools = (tools,flag) => {
 
 const loadAiId = id => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
-    fetch(url).then(res => res.json()).then(data => console.log(data));
+    fetch(url).then(res => res.json()).then(data => displayAiID(data.data));
+}
+
+const displayAiID = data => {
+    console.log(data)
+    const modalContainer = document.getElementById('row-modal');
+    modalContainer.innerHTML = "";
+
+    const toolDescription = document.createElement('h4');
+
+    console.log(data.description);
+    console.log(toolDescription);
+    toolDescription.innerHTML = data.description;
+    modalContainer.appendChild(toolDescription);
+    const servicePrice = document.createElement('div');
+    servicePrice.classList.add('d-md-flex' ,'justify-content-between', 'align-items-center');
+    servicePrice.innerHTML = `
+        ${data.pricing !== null? data.pricing.map(price => {
+            return `
+            <div class="text-center bg-light text-danger px-4 py-3 rounded-3 m-2">
+
+            <h5 class = >${price.price !== '0' || price.price !== null ?price.price:"Free of cost"} <br> <span>${price.plan}</span></h5> </div>`;
+        }).join(""):  "No data available"}
+                            
+                          
+    `;
+
+    modalContainer.appendChild(servicePrice);
+
 }
 
 
